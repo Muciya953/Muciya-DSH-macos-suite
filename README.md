@@ -1,12 +1,40 @@
-# Muciya DSH macOS 套件
+<p align="center">
+  <img src="assets/brand/dsh.png" width="56" height="56" alt="DSH">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/apple-on-dark.svg">
+    <img src="assets/brand/apple-on-light.svg" width="52" height="52" alt="macOS">
+  </picture>
+</p>
 
-**简体中文** | [English](README.en.md)
+<h1 align="center">Muciya DSH macOS 套件</h1>
+
+<p align="center"><sub>五个可独立安装的 DSH Web 插件，为 macOS 上的 DSH Desktop 打造</sub></p>
+
+<p align="center">
+  <img alt="DSH" src="https://img.shields.io/badge/DSH-%E2%89%A5%200.2.0--rc.2-4d6bfe?style=flat-square">
+  <img alt="packages" src="https://img.shields.io/badge/packages-5-1d1d1f?style=flat-square">
+  <img alt="macOS" src="https://img.shields.io/badge/platform-macOS-1d1d1f?style=flat-square">
+  <a href="https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/tag/v1.0.0"><img alt="release" src="https://img.shields.io/github/v/release/Muciya953/Muciya-DSH-macos-suite?style=flat-square&color=4d6bfe"></a>
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-1d1d1f?style=flat-square">
+</p>
+
+<p align="center">
+  <b>简体中文</b> · <a href="README.en.md">English</a>
+</p>
 
 ## 简介
 
 五个可以各自独立安装的 DSH Web 插件：**插件库、技能库、外观库、智能体团队、用量统计**。每个都是完整
 bundle：自己的 `package.json`、自己的 `cordis.patch.yml` 挂载行、自己的宿主半（`lib/index.js`）和浏览器半
 （`lib/client.js`）。
+
+| 插件 | 包名 | 分类 | 管什么 |
+| --- | --- | --- | --- |
+| 插件库 | `@deepseek-ai/dsh-client-ui-plugin-manager` | `market` | 插件面板与插件市场 |
+| 技能库 | `muciya-dsh-plugin-skill-library` | `skill` | 本机技能总览与筛选 |
+| 外观库 | `muciya-dsh-plugin-appearance-library` | `theme` | 壁纸、影片皮肤、航拍、开机动画 |
+| 智能体团队 | `muciya-dsh-plugin-agent-teams` | `agi` | 花名册、任务看板、自动化控制台 |
+| 用量统计 | `muciya-dsh-plugin-usage` | `usage` | 台账、余额、定价、鲸元券 |
 
 以前是一个包用一份 `lib/client.js` 画四个面板。DSH 的客户端模块就是一个包，那种形态有两个代价：首屏前
 要下载并执行全部面板，一个面板的 `apply` 抛异常会带走其他面板。现在每包一行、一个宿主半、一个浏览器半。
@@ -78,9 +106,9 @@ node scripts/check-packages.mjs      # 174 项：bundle/client 声明、行 id �
 
 ## 组件功能亮点
 
-### 插件库 · 插件库面板与插件市场
+### 插件库 — 插件面板与插件市场
 
-包名 `@deepseek-ai/dsh-client-ui-plugin-manager`（上游 fork，保留原包名以维持 typert RPC 命名空间），分类 `market`。
+<sub>`@deepseek-ai/dsh-client-ui-plugin-manager` · `market` · 上游 fork</sub>
 
 - **逐行开关**：已安装插件的每一行单独启停，bundle 与子行分开展示。
 - **插件市场**：浏览、安装、看来源归属与版本；安装日志与失败原因在同一条目里。
@@ -90,7 +118,7 @@ node scripts/check-packages.mjs      # 174 项：bundle/client 声明、行 id �
 
 ### 技能库
 
-包名 `muciya-dsh-plugin-skill-library`，分类 `skill`。零依赖。
+<sub>`muciya-dsh-plugin-skill-library` · `skill` · 零依赖</sub>
 
 - **读真实技能根**：扫描 `~/.dsh-beta/skills`、`~/.agents/skills`、工作区 `.dsh/skills` 与 `.agents/skills`，
   新装 skill 不用重装插件就能出现。
@@ -100,7 +128,7 @@ node scripts/check-packages.mjs      # 174 项：bundle/client 声明、行 id �
 
 ### 外观库
 
-包名 `muciya-dsh-plugin-appearance-library`，分类 `theme`。需要 macOS。
+<sub>`muciya-dsh-plugin-appearance-library` · `theme` · 需要 macOS</sub>
 
 - **壁纸导出成皮肤**：把本机壁纸整理成 DSH 皮肤（`skin.json` + `skin.css` + 预览图），可应用、移除、恢复默认。
 - **影片画质与循环**：每张影片皮肤可选「原画 / 压缩」与「普通 / 无缝」；压缩走 ffmpeg 重编码，无缝是交叉淡化循环。
@@ -116,7 +144,7 @@ node scripts/check-packages.mjs      # 174 项：bundle/client 声明、行 id �
 
 ### 智能体团队
 
-包名 `muciya-dsh-plugin-agent-teams`，分类 `agi`。自动化控制台部分需要 macOS。
+<sub>`muciya-dsh-plugin-agent-teams` · `agi` · 自动化控制台需要 macOS</sub>
 
 - **花名册与拓扑**：列出会话正在跑的智能体，按父子关系画拓扑，点成员跳到它的会话。
 - **共享任务看板**：按成员筛选团队共享任务，只读刷新投影。
@@ -127,7 +155,7 @@ node scripts/check-packages.mjs      # 174 项：bundle/client 声明、行 id �
 
 ### 用量统计
 
-包名 `muciya-dsh-plugin-usage`，分类 `usage`。
+<sub>`muciya-dsh-plugin-usage` · `usage` · 台账与探测分离</sub>
 
 - **本地台账**：按本地日（不是 UTC）分桶，记到「日 / 供应商 / 模型」，含 input、output、cache 读、cache 写、
   reasoning、调用次数。

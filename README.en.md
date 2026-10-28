@@ -1,12 +1,40 @@
-# Muciya DSH macOS Suite
+<p align="center">
+  <img src="assets/brand/dsh.png" width="56" height="56" alt="DSH">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/apple-on-dark.svg">
+    <img src="assets/brand/apple-on-light.svg" width="52" height="52" alt="macOS">
+  </picture>
+</p>
 
-[简体中文](README.md) | **English**
+<h1 align="center">Muciya DSH macOS Suite</h1>
+
+<p align="center"><sub>Five independently installable DSH Web plugins, built for DSH Desktop on macOS</sub></p>
+
+<p align="center">
+  <img alt="DSH" src="https://img.shields.io/badge/DSH-%E2%89%A5%200.2.0--rc.2-4d6bfe?style=flat-square">
+  <img alt="packages" src="https://img.shields.io/badge/packages-5-1d1d1f?style=flat-square">
+  <img alt="macOS" src="https://img.shields.io/badge/platform-macOS-1d1d1f?style=flat-square">
+  <a href="https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/tag/v1.0.0"><img alt="release" src="https://img.shields.io/github/v/release/Muciya953/Muciya-DSH-macos-suite?style=flat-square&color=4d6bfe"></a>
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-1d1d1f?style=flat-square">
+</p>
+
+<p align="center">
+  <a href="README.md">简体中文</a> · <b>English</b>
+</p>
 
 ## Introduction
 
 Five DSH Web plugins that install independently: **Plugin Library, Skill Library, Appearance Library, Agent
 Teams, Usage**. Each is a real bundle — its own `package.json`, its own `cordis.patch.yml` row, its own Host
 half (`lib/index.js`) and its own browser half (`lib/client.js`).
+
+| Plugin | Package | Category | What it covers |
+| --- | --- | --- | --- |
+| Plugin Library | `@deepseek-ai/dsh-client-ui-plugin-manager` | `market` | Plugin panel and plugin market |
+| Skill Library | `muciya-dsh-plugin-skill-library` | `skill` | Local skill overview and filtering |
+| Appearance Library | `muciya-dsh-plugin-appearance-library` | `theme` | Wallpapers, film skins, aerials, startup splash |
+| Agent Teams | `muciya-dsh-plugin-agent-teams` | `agi` | Roster, task board, automation console |
+| Usage | `muciya-dsh-plugin-usage` | `usage` | Ledger, balances, pricing, voucher |
 
 This repository used to ship one package that painted four panels from a single `lib/client.js`. A DSH client
 module *is* one package, and that shape cost two things: every profile downloaded and executed every panel
@@ -85,8 +113,7 @@ node scripts/check-packages.mjs      # 174 assertions: bundle/client declaration
 
 ### Plugin Library — plugin panel and market
 
-Package `@deepseek-ai/dsh-client-ui-plugin-manager` (upstream fork; the name is kept so its typert RPC namespace
-stays intact), category `market`.
+<sub>`@deepseek-ai/dsh-client-ui-plugin-manager` · `market` · upstream fork</sub>
 
 - **Per-row switches**: each installed row toggles on its own; bundles and their child rows are listed separately.
 - **Market**: browse, install, and see provenance plus version; the install log and the failure reason sit on the
@@ -99,7 +126,7 @@ stays intact), category `market`.
 
 ### Skill Library
 
-Package `muciya-dsh-plugin-skill-library`, category `skill`. No dependencies.
+<sub>`muciya-dsh-plugin-skill-library` · `skill` · no dependencies</sub>
 
 - **Reads the real skill roots**: scans `~/.dsh-beta/skills`, `~/.agents/skills`, and the workspace's
   `.dsh/skills` and `.agents/skills`, so a new skill appears without reinstalling the plugin.
@@ -109,7 +136,7 @@ Package `muciya-dsh-plugin-skill-library`, category `skill`. No dependencies.
 
 ### Appearance Library
 
-Package `muciya-dsh-plugin-appearance-library`, category `theme`. Requires macOS.
+<sub>`muciya-dsh-plugin-appearance-library` · `theme` · requires macOS</sub>
 
 - **Wallpapers exported as skins**: turns this Mac's wallpapers into DSH skins (`skin.json` + `skin.css` +
   previews) that you can apply, remove and restore.
@@ -129,7 +156,7 @@ Package `muciya-dsh-plugin-appearance-library`, category `theme`. Requires macOS
 
 ### Agent Teams
 
-Package `muciya-dsh-plugin-agent-teams`, category `agi`. The automation console requires macOS.
+<sub>`muciya-dsh-plugin-agent-teams` · `agi` · the automation console requires macOS</sub>
 
 - **Roster and topology**: lists the agents a session is running, draws the parent/child topology, jumps to a
   member's session.
@@ -143,7 +170,7 @@ Package `muciya-dsh-plugin-agent-teams`, category `agi`. The automation console 
 
 ### Usage
 
-Package `muciya-dsh-plugin-usage`, category `usage`.
+<sub>`muciya-dsh-plugin-usage` · `usage` · ledger and probes kept apart</sub>
 
 - **Local ledger**: bucketed by local day (not UTC), recorded per day / provider / model with input, output,
   cache read, cache write, reasoning and call counts.
