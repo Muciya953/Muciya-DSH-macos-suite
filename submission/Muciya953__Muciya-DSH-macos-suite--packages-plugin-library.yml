@@ -1,0 +1,9 @@
+# Muciya macOS suite — plugin-library
+# Drop this file into awesome-dsh-plugin's data/plugins/ and open one PR.
+# tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/<asset>.tgz   # 打好 Release 后填
+url: https://github.com/Muciya953/Muciya-DSH-macos-suite/tree/main/packages/plugin-library
+name: Muciya953/Muciya-DSH-macos-suite#plugin-library
+category: market
+description:
+  en: "Sidebar plugin library and market: installed packages with row-level switches, market browsing with install attribution, and a detail view that shows the config value where it was composed. Local fork of the built-in plugin manager with a Chinese UI and a market shortcut."
+  zh: "侧栏插件库与市场：已安装包逐行开关、市场浏览与安装来源、详情里显示配置值被写在哪一层。内置插件管理器的本地化 fork，附带市场快捷键。"

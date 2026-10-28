@@ -1,0 +1,18 @@
+# The suite is a set: one bundle row per plugin. Each row names the package so an install
+# resolves it from node_modules; a hand-mounted checkout points the same rows at
+# ./plugins/<name>/lib/index.js instead (see MANUAL.zh.md).
+#
+# `muciya-plugin-library` keeps the upstream package identity on purpose: the Host half
+# and both typert halves register under `@deepseek-ai/dsh-client-ui-plugin-manager`, and a
+# renamed identity would orphan the RPC namespace its browser half talks to.
+- insert:
+    - id: muciya-plugin-library
+      name: "@deepseek-ai/dsh-client-ui-plugin-manager"
+    - id: muciya-skill-library
+      name: muciya-dsh-plugin-skill-library
+    - id: muciya-appearance-library
+      name: muciya-dsh-plugin-appearance-library
+    - id: muciya-agent-teams
+      name: muciya-dsh-plugin-agent-teams
+    - id: muciya-usage
+      name: muciya-dsh-plugin-usage

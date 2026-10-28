@@ -1,0 +1,77 @@
+{
+  "name": "muciya-dsh-plugin-macos-suite",
+  "version": "2.0.0",
+  "description": "The Muciya macOS suite for DSH Web: five independently installable plugins — plugin library, skill library, appearance library, agent teams and usage.",
+  "license": "MIT",
+  "author": "Muciya953",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "icon": "./icon.svg",
+  "files": [
+    "src/index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "MANUAL.zh.md",
+    "PUBLISH.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "icon.svg",
+    "packages/*/lib",
+    "packages/*/scripts",
+    "packages/*/cordis.patch.yml",
+    "packages/*/README.md",
+    "packages/*/package.json"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "skin",
+    "wallpaper",
+    "skill-library",
+    "automation",
+    "launchd",
+    "cron",
+    "macos",
+    "usage",
+    "cost",
+    "tokens",
+    "ledger"
+  ],
+  "scripts": {
+    "build": "node scripts/build-package.mjs",
+    "check": "node scripts/check-packages.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "engines": {
+      "dsh": ">=0.2.0-rc.2"
+    }
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@deepseek-ai/dsh-client-ui-plugin-manager": "file:./packages/plugin-library",
+    "muciya-dsh-plugin-skill-library": "file:./packages/skill-library",
+    "muciya-dsh-plugin-appearance-library": "file:./packages/appearance-library",
+    "muciya-dsh-plugin-agent-teams": "file:./packages/agent-teams",
+    "muciya-dsh-plugin-usage": "file:./packages/usage"
+  }
+}

@@ -1,0 +1,15 @@
+<!--
+  Startup splash stage.
+
+  `{{stage}}` is replaced by the host half with the veil pair, the film element
+  and the waterline. Tag literals stay out of every asset: the platform finds its
+  injection anchor with a first-match regex, so a comment naming one would
+  capture the rows that follow it into the wrong place.
+
+  The container is decoration only — `pointer-events: none`, `aria-hidden` — so it
+  can never take a click or announce itself over the shell's own state. The
+  behaviour script in `splash.js` owns when it leaves.
+-->
+<div id="dsh-startup-splash" data-phase="boot" role="presentation" aria-hidden="true">
+  {{stage}}
+</div>

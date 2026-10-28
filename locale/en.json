@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "title": "Muciya DSH macOS Suite",
+    "description": "Skill Library, Appearance Library, Automation Tasks and a read-only usage card in the sidebar footer, in one DSH Web plugin."
+  },
+  "panel": {
+    "skillLibrary": "Skill Library",
+    "appearanceLibrary": "Appearance Library",
+    "automationTasks": "Automation Tasks",
+    "usageGlance": "Usage Glance"
+  }
+}

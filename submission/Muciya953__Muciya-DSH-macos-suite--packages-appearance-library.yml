@@ -1,0 +1,9 @@
+# Muciya macOS suite — appearance-library
+# Drop this file into awesome-dsh-plugin's data/plugins/ and open one PR.
+# tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/<asset>.tgz   # 打好 Release 后填
+url: https://github.com/Muciya953/Muciya-DSH-macos-suite/tree/main/packages/appearance-library
+name: Muciya953/Muciya-DSH-macos-suite#appearance-library
+category: theme
+description:
+  en: "This Mac's wallpapers exported as real DSH skins: catalog with previews, import with crop, aerial wallpapers, apply/remove/restore, a startup splash with audio, and the skin settings section."
+  zh: "把本机壁纸导出为真正的 DSH 皮肤：带预览的目录、裁剪导入、航拍壁纸、应用/移除/还原、带音频的开机动画，以及皮肤设置分区。"

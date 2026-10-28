@@ -1,0 +1,9 @@
+# Muciya macOS suite — usage
+# Drop this file into awesome-dsh-plugin's data/plugins/ and open one PR.
+# tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/<asset>.tgz   # 打好 Release 后填
+url: https://github.com/Muciya953/Muciya-DSH-macos-suite/tree/main/packages/usage
+name: Muciya953/Muciya-DSH-macos-suite#usage
+category: usage
+description:
+  en: "A local day/provider/model token ledger with CNY pricing (peak and off-peak windows), read-only balance probes for the providers that expose one, and a sidebar card."
+  zh: "本地台账按日/供应商/模型记录 token，按人民币定价（含峰谷时段），对提供余额接口的供应商做只读探测，并在侧栏显示消费卡。"

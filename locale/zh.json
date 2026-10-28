@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "title": "Muciya DSH macOS 套件",
+    "description": "技能库、外观库、自动化任务三个面板，外加侧栏底部一张只读的用量速览卡片，合成一个 DSH Web 插件。"
+  },
+  "panel": {
+    "skillLibrary": "技能库",
+    "appearanceLibrary": "外观库",
+    "automationTasks": "自动化任务",
+    "usageGlance": "用量速览"
+  }
+}

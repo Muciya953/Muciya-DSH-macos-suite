@@ -1,0 +1,782 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-10T06:31:12.702Z",
+  "storage": "/Users/toujing/.dsh-beta/skins",
+  "entry": {
+    "name": "About this library",
+    "nameZh": "关于外观库",
+    "accent": "#4a5fa8",
+    "counts": {
+      "wallpapers": 42,
+      "still": 34,
+      "motion": 8,
+      "clusters": 5,
+      "mediaMB": 344
+    },
+    "notes": [
+      "来源：macOS 系统自带的桌面图片（6K 母版）与 MobileAsset 缓存，以及 .wallpapers 里的动态桌面。全部只读。",
+      "接入方式：每张壁纸导出为一款真正的 DSH 皮肤，由皮肤中心渲染与持久化——背景遮罩、模糊滑杆、深浅色切换都直接沿用现有控件。",
+      "配色：只放开表面透明度，所有颜色 token 仍是官方外壳的，因此换壁纸不会改变对比度，也不会让正文变得难读。",
+      "动态壁纸已转码为 H.264 MP4（HEVC 的 .mov 在 <video> 里不可靠），静音循环播放。"
+    ]
+  },
+  "groups": [
+    {
+      "key": "desktop-pictures",
+      "nameZh": "桌面图片",
+      "blurb": "macOS 自带的桌面图片，6K 母版",
+      "order": 1,
+      "ids": [
+        "wl-imac-blue",
+        "wl-imac-green",
+        "wl-imac-orange",
+        "wl-imac-pink",
+        "wl-imac-purple",
+        "wl-imac-silver",
+        "wl-imac-yellow",
+        "wl-mac-blue",
+        "wl-mac-pink",
+        "wl-mac-purple",
+        "wl-mac-yellow",
+        "wl-radial-sky-blue",
+        "wl-sonoma"
+      ]
+    },
+    {
+      "key": "assets-v2",
+      "nameZh": "MobileAsset",
+      "blurb": "桌面图片的 MobileAsset 缓存，6K 母版",
+      "order": 2,
+      "ids": [
+        "wl-beach",
+        "wl-big-sur",
+        "wl-big-sur-aerial",
+        "wl-big-sur-coastline",
+        "wl-big-sur-graphic",
+        "wl-big-sur-horizon",
+        "wl-big-sur-mountains",
+        "wl-big-sur-night-grasses",
+        "wl-big-sur-night-succulents",
+        "wl-big-sur-road",
+        "wl-big-sur-waters-edge",
+        "wl-catalina-clouds",
+        "wl-catalina-shoreline",
+        "wl-catalina-silhouette",
+        "wl-hello-grey",
+        "wl-hello-metallic-blue",
+        "wl-hello-yellow",
+        "wl-motion-purple",
+        "wl-motion-yellow",
+        "wl-ventura-graphic"
+      ]
+    },
+    {
+      "key": "wallpapers.video",
+      "nameZh": "动态壁纸",
+      "blurb": "随时间流动的动态桌面",
+      "order": 3,
+      "ids": [
+        "wl-sonoma-graphic-dark-landscape",
+        "wl-sonoma-graphic-dark-portrait",
+        "wl-sonoma-graphic-light-ls",
+        "wl-sonoma-graphic-light-portrait",
+        "wl-tahoe-day"
+      ]
+    },
+    {
+      "key": "aerials",
+      "nameZh": "航拍壁纸",
+      "blurb": "系统已下载的 4K 航拍影片 — 红杉林、太浩湖一类实拍",
+      "order": 4,
+      "ids": [
+        "wl-del-norte-coast-redwoods",
+        "wl-tahiti-waves",
+        "wl-tahiti-waves-2"
+      ]
+    },
+    {
+      "key": "custom",
+      "nameZh": "本机图片",
+      "blurb": "用 --file 交进来的本机图片，做成同规格的皮肤",
+      "order": 5,
+      "ids": [
+        "wl-picture-1wmz5u"
+      ]
+    }
+  ],
+  "wallpapers": [
+    {
+      "id": "wl-imac-blue",
+      "skin": "wl-imac-blue",
+      "name": "iMac Blue",
+      "nameZh": "iMac 蓝",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#7a5ea8",
+      "source": "/System/Library/Desktop Pictures/iMac Blue.heic",
+      "bytes": {
+        "media": 869760,
+        "preview": 117107,
+        "thumb": 18146
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-imac-green",
+      "skin": "wl-imac-green",
+      "name": "iMac Green",
+      "nameZh": "iMac 绿",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#8a6f3f",
+      "source": "/System/Library/Desktop Pictures/iMac Green.heic",
+      "bytes": {
+        "media": 769795,
+        "preview": 112469,
+        "thumb": 18223
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-imac-orange",
+      "skin": "wl-imac-orange",
+      "name": "iMac Orange",
+      "nameZh": "iMac 橙",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#4f7f5a",
+      "source": "/System/Library/Desktop Pictures/iMac Orange.heic",
+      "bytes": {
+        "media": 721849,
+        "preview": 115822,
+        "thumb": 18834
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-imac-pink",
+      "skin": "wl-imac-pink",
+      "name": "iMac Pink",
+      "nameZh": "iMac 粉",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/Desktop Pictures/iMac Pink.heic",
+      "bytes": {
+        "media": 776771,
+        "preview": 116214,
+        "thumb": 18860
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-imac-purple",
+      "skin": "wl-imac-purple",
+      "name": "iMac Purple",
+      "nameZh": "iMac 紫",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#4a5fa8",
+      "source": "/System/Library/Desktop Pictures/iMac Purple.heic",
+      "bytes": {
+        "media": 893797,
+        "preview": 117089,
+        "thumb": 18112
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-imac-silver",
+      "skin": "wl-imac-silver",
+      "name": "iMac Silver",
+      "nameZh": "iMac 银",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#8c5a72",
+      "source": "/System/Library/Desktop Pictures/iMac Silver.heic",
+      "bytes": {
+        "media": 731036,
+        "preview": 103009,
+        "thumb": 16609
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-imac-yellow",
+      "skin": "wl-imac-yellow",
+      "name": "iMac Yellow",
+      "nameZh": "iMac 黄",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#7a5ea8",
+      "source": "/System/Library/Desktop Pictures/iMac Yellow.heic",
+      "bytes": {
+        "media": 493556,
+        "preview": 94755,
+        "thumb": 16283
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-mac-blue",
+      "skin": "wl-mac-blue",
+      "name": "Mac Blue",
+      "nameZh": "Mac 蓝",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#8c5a72",
+      "source": "/System/Library/Desktop Pictures/Mac Blue.heic",
+      "bytes": {
+        "media": 529990,
+        "preview": 126323,
+        "thumb": 23627
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-mac-pink",
+      "skin": "wl-mac-pink",
+      "name": "Mac Pink",
+      "nameZh": "Mac 粉",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#a8695e",
+      "source": "/System/Library/Desktop Pictures/Mac Pink.heic",
+      "bytes": {
+        "media": 485254,
+        "preview": 110851,
+        "thumb": 20625
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-mac-purple",
+      "skin": "wl-mac-purple",
+      "name": "Mac Purple",
+      "nameZh": "Mac 紫",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#3f7d8c",
+      "source": "/System/Library/Desktop Pictures/Mac Purple.heic",
+      "bytes": {
+        "media": 506295,
+        "preview": 117624,
+        "thumb": 21935
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-mac-yellow",
+      "skin": "wl-mac-yellow",
+      "name": "Mac Yellow",
+      "nameZh": "Mac 黄",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#8c5a72",
+      "source": "/System/Library/Desktop Pictures/Mac Yellow.heic",
+      "bytes": {
+        "media": 482711,
+        "preview": 106546,
+        "thumb": 20155
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-radial-sky-blue",
+      "skin": "wl-radial-sky-blue",
+      "name": "Radial Sky Blue",
+      "nameZh": "放射天空蓝",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#3f7d8c",
+      "source": "/System/Library/Desktop Pictures/Radial Sky Blue.heic",
+      "bytes": {
+        "media": 1000065,
+        "preview": 251486,
+        "thumb": 39352
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-sonoma",
+      "skin": "wl-sonoma",
+      "name": "Sonoma",
+      "nameZh": "索诺马",
+      "cluster": "desktop-pictures",
+      "kind": "image",
+      "accent": "#7a5ea8",
+      "source": "/System/Library/Desktop Pictures/Sonoma.heic",
+      "bytes": {
+        "media": 334269,
+        "preview": 79992,
+        "thumb": 14658
+      },
+      "order": 1
+    },
+    {
+      "id": "wl-beach",
+      "skin": "wl-beach",
+      "name": "The Beach",
+      "nameZh": "海滩",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#4f7f5a",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/c854fc48a85b79733a549908eb9959b80f08ba59.asset/AssetData/The Beach.heic",
+      "bytes": {
+        "media": 829656,
+        "preview": 232135,
+        "thumb": 34033
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur",
+      "skin": "wl-big-sur",
+      "name": "Big Sur",
+      "nameZh": "大苏尔",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#7a5ea8",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/e9ff802c97332d002b37836419590a2b1ff3bcc9.asset/AssetData/Big Sur.heic",
+      "bytes": {
+        "media": 2110151,
+        "preview": 358537,
+        "thumb": 33161
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-aerial",
+      "skin": "wl-big-sur-aerial",
+      "name": "Big Sur Aerial",
+      "nameZh": "大苏尔航拍",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#a8695e",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/e6674785e7325590a4498f54a6554f90c69c7b45.asset/AssetData/Big Sur Aerial.heic",
+      "bytes": {
+        "media": 1272315,
+        "preview": 236181,
+        "thumb": 26004
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-coastline",
+      "skin": "wl-big-sur-coastline",
+      "name": "Big Sur Coastline",
+      "nameZh": "大苏尔海岸线",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#8c5a72",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/bec472e7c6e54ee0765abffa76c624290b9ef2c2.asset/AssetData/Big Sur Coastline.heic",
+      "bytes": {
+        "media": 2166388,
+        "preview": 377708,
+        "thumb": 33866
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-graphic",
+      "skin": "wl-big-sur-graphic",
+      "name": "Big Sur Graphic",
+      "nameZh": "大苏尔图形",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#a8695e",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/2d33861f84f21757db8d5cc656ae09b1143a2c73.asset/AssetData/Big Sur Graphic.heic",
+      "bytes": {
+        "media": 302438,
+        "preview": 61164,
+        "thumb": 10711
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-horizon",
+      "skin": "wl-big-sur-horizon",
+      "name": "Big Sur Horizon",
+      "nameZh": "大苏尔地平线",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#4a5fa8",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/523018afdcacd0fc99fa9364013ed6218aea745e.asset/AssetData/Big Sur Horizon.heic",
+      "bytes": {
+        "media": 1165088,
+        "preview": 176695,
+        "thumb": 19424
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-mountains",
+      "skin": "wl-big-sur-mountains",
+      "name": "Big Sur Mountains",
+      "nameZh": "大苏尔群山",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#a8695e",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/7a1f6e346a253992b2df0358398caafb6d75fe4a.asset/AssetData/Big Sur Mountains.heic",
+      "bytes": {
+        "media": 759231,
+        "preview": 130244,
+        "thumb": 16026
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-night-grasses",
+      "skin": "wl-big-sur-night-grasses",
+      "name": "Big Sur Night Grasses",
+      "nameZh": "大苏尔夜色夜草",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/2a4e3657b33078a98b8ed335adfedb5b600bafae.asset/AssetData/Big Sur Night Grasses.heic",
+      "bytes": {
+        "media": 1979393,
+        "preview": 416081,
+        "thumb": 40454
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-night-succulents",
+      "skin": "wl-big-sur-night-succulents",
+      "name": "Big Sur Night Succulents",
+      "nameZh": "大苏尔夜色多肉",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#8a6f3f",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/7eb0f47dc8ea3304979f42765c14af2a35f9590b.asset/AssetData/Big Sur Night Succulents.heic",
+      "bytes": {
+        "media": 1044974,
+        "preview": 299185,
+        "thumb": 42980
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-road",
+      "skin": "wl-big-sur-road",
+      "name": "Big Sur Road",
+      "nameZh": "大苏尔公路",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#a8695e",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/643aa03a1828fb2170170ef999b18900bd6b26f6.asset/AssetData/Big Sur Road.heic",
+      "bytes": {
+        "media": 1119327,
+        "preview": 173006,
+        "thumb": 18353
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-big-sur-waters-edge",
+      "skin": "wl-big-sur-waters-edge",
+      "name": "Big Sur Waters Edge",
+      "nameZh": "大苏尔水域水畔",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#3f7d8c",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/1ad4d39118248bd2a623370876767bd4ed3eeeee.asset/AssetData/Big Sur Waters Edge.heic",
+      "bytes": {
+        "media": 2658419,
+        "preview": 450708,
+        "thumb": 40766
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-catalina-clouds",
+      "skin": "wl-catalina-clouds",
+      "name": "Catalina Clouds",
+      "nameZh": "卡塔利娜云海",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#8a6f3f",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/866514bba2be10285b3c5bb2dfef3c40a6946829.asset/AssetData/Catalina Clouds.heic",
+      "bytes": {
+        "media": 1231818,
+        "preview": 196315,
+        "thumb": 18817
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-catalina-shoreline",
+      "skin": "wl-catalina-shoreline",
+      "name": "Catalina Shoreline",
+      "nameZh": "卡塔利娜海岸",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/a8af0c8d16da2a3b7e7324ad0798d758d0c5f5e4.asset/AssetData/Catalina Shoreline.heic",
+      "bytes": {
+        "media": 2700152,
+        "preview": 461107,
+        "thumb": 37179
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-catalina-silhouette",
+      "skin": "wl-catalina-silhouette",
+      "name": "Catalina Silhouette",
+      "nameZh": "卡塔利娜剪影",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#8a6f3f",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/db05089e5e432fda7e4e339c4c7e2d36a804bf0d.asset/AssetData/Catalina Silhouette.heic",
+      "bytes": {
+        "media": 1592814,
+        "preview": 324185,
+        "thumb": 35397
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-hello-grey",
+      "skin": "wl-hello-grey",
+      "name": "hello Grey",
+      "nameZh": "你好灰",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#3f7d8c",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/a34ef9bad7df959105cd068e2ecb29bc05110fdf.asset/AssetData/hello Grey.heic",
+      "bytes": {
+        "media": 232661,
+        "preview": 59667,
+        "thumb": 11245
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-hello-metallic-blue",
+      "skin": "wl-hello-metallic-blue",
+      "name": "Hello Metallic Blue",
+      "nameZh": "Hello 金属蓝",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/99b5ae52256c44965a1265411ce184d6a1f2cf2a.asset/AssetData/Hello Metallic Blue.heic",
+      "bytes": {
+        "media": 777384,
+        "preview": 161542,
+        "thumb": 25243
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-hello-yellow",
+      "skin": "wl-hello-yellow",
+      "name": "hello Yellow",
+      "nameZh": "你好黄",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/856383b1ab7eb1b08c917d58711ff27f0aafd724.asset/AssetData/hello Yellow.heic",
+      "bytes": {
+        "media": 235319,
+        "preview": 60454,
+        "thumb": 10915
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-motion-purple",
+      "skin": "wl-motion-purple",
+      "name": "Motion Purple",
+      "nameZh": "流动紫",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#4a5fa8",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/a1fc8d2763199f7666431ee9535e32a725e5d7fd.asset/AssetData/Motion Purple.heic",
+      "bytes": {
+        "media": 1107612,
+        "preview": 205232,
+        "thumb": 31308
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-motion-yellow",
+      "skin": "wl-motion-yellow",
+      "name": "Motion Yellow",
+      "nameZh": "流动黄",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#7a5ea8",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/7e62dd4fcacffe819b2b9da76d25dab6228a06be.asset/AssetData/Motion Yellow.heic",
+      "bytes": {
+        "media": 1062150,
+        "preview": 217497,
+        "thumb": 33903
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-ventura-graphic",
+      "skin": "wl-ventura-graphic",
+      "name": "Ventura Graphic",
+      "nameZh": "文图拉图形",
+      "cluster": "assets-v2",
+      "kind": "image",
+      "accent": "#3f7d8c",
+      "source": "/System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/f6c545d6b10bb0210fff16d65aa64c27e7ad834c.asset/AssetData/Ventura Graphic.heic",
+      "bytes": {
+        "media": 317257,
+        "preview": 72281,
+        "thumb": 13036
+      },
+      "order": 2
+    },
+    {
+      "id": "wl-sonoma-graphic-dark-landscape",
+      "skin": "wl-sonoma-graphic-dark-landscape",
+      "name": "Sonoma Sonoma Graphic Dark Landscape",
+      "nameZh": "索诺马图形暗色横版",
+      "cluster": "wallpapers.video",
+      "kind": "video",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/Desktop Pictures/.wallpapers/Sonoma/Sonoma Graphic Dark Landscape.mov",
+      "bytes": {
+        "media": 8652336,
+        "preview": 39810,
+        "thumb": 7737
+      },
+      "order": 3
+    },
+    {
+      "id": "wl-sonoma-graphic-dark-portrait",
+      "skin": "wl-sonoma-graphic-dark-portrait",
+      "name": "Sonoma Sonoma Graphic Dark Portrait",
+      "nameZh": "索诺马图形暗色竖版",
+      "cluster": "wallpapers.video",
+      "kind": "video",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/Desktop Pictures/.wallpapers/Sonoma/Sonoma Graphic Dark Portrait.mov",
+      "bytes": {
+        "media": 7740516,
+        "preview": 35179,
+        "thumb": 7273
+      },
+      "order": 3
+    },
+    {
+      "id": "wl-sonoma-graphic-light-ls",
+      "skin": "wl-sonoma-graphic-light-ls",
+      "name": "Sonoma Sonoma Graphic Light Landscape",
+      "nameZh": "索诺马图形浅色横版",
+      "cluster": "wallpapers.video",
+      "kind": "video",
+      "accent": "#4f7f5a",
+      "source": "/System/Library/Desktop Pictures/.wallpapers/Sonoma/Sonoma Graphic Light Landscape.mov",
+      "bytes": {
+        "media": 11581079,
+        "preview": 51008,
+        "thumb": 9276
+      },
+      "order": 3
+    },
+    {
+      "id": "wl-sonoma-graphic-light-portrait",
+      "skin": "wl-sonoma-graphic-light-portrait",
+      "name": "Sonoma Sonoma Graphic Light Portrait",
+      "nameZh": "索诺马图形浅色竖版",
+      "cluster": "wallpapers.video",
+      "kind": "video",
+      "accent": "#5a6b8c",
+      "source": "/System/Library/Desktop Pictures/.wallpapers/Sonoma/Sonoma Graphic Light Portrait.mov",
+      "bytes": {
+        "media": 10102632,
+        "preview": 46050,
+        "thumb": 8559
+      },
+      "order": 3
+    },
+    {
+      "id": "wl-tahoe-day",
+      "skin": "wl-tahoe-day",
+      "name": "Tahoe Day Tahoe Day",
+      "nameZh": "太浩湖白昼",
+      "cluster": "wallpapers.video",
+      "kind": "video",
+      "accent": "#8a6f3f",
+      "source": "/System/Library/Desktop Pictures/.wallpapers/Tahoe Day/Tahoe Day.mov",
+      "bytes": {
+        "media": 37577752,
+        "preview": 266035,
+        "thumb": 16716
+      },
+      "order": 3
+    },
+    {
+      "id": "wl-del-norte-coast-redwoods",
+      "skin": "wl-del-norte-coast-redwoods",
+      "name": "Del Norte Coast Redwoods State Park, California",
+      "nameZh": "德尔诺特海岸红杉州立公园, 加利福尼亚",
+      "cluster": "aerials",
+      "kind": "video",
+      "accent": "#4a5fa8",
+      "source": "/Users/toujing/Library/Application Support/com.apple.wallpaper/aerials/videos/AA5E82B9-289A-480C-A14B-242989107275.mov",
+      "bytes": {
+        "media": 168653226,
+        "preview": 659967,
+        "thumb": 32957
+      },
+      "order": 4
+    },
+    {
+      "id": "wl-tahiti-waves",
+      "skin": "wl-tahiti-waves",
+      "name": "Tahiti Waves",
+      "nameZh": "大溪地海浪 · TH_803_A001_8",
+      "cluster": "aerials",
+      "kind": "video",
+      "accent": "#3f7d8c",
+      "source": "/Users/toujing/Library/Application Support/com.apple.wallpaper/aerials/videos/149E7795-DBDA-4F5D-B39A-14712F841118.mov",
+      "bytes": {
+        "media": 63951029,
+        "preview": 155030,
+        "thumb": 15393
+      },
+      "order": 4
+    },
+    {
+      "id": "wl-tahiti-waves-2",
+      "skin": "wl-tahiti-waves-2",
+      "name": "Tahiti Waves",
+      "nameZh": "大溪地海浪 · TH_804_A001_8",
+      "cluster": "aerials",
+      "kind": "video",
+      "accent": "#7a5ea8",
+      "source": "/Users/toujing/Library/Application Support/com.apple.wallpaper/aerials/videos/8C31B06F-91A4-4F7C-93ED-56146D7F48B9.mov",
+      "bytes": {
+        "media": 19109568,
+        "preview": 165741,
+        "thumb": 13013
+      },
+      "order": 4
+    },
+    {
+      "id": "wl-picture-1wmz5u",
+      "skin": "wl-picture-1wmz5u",
+      "name": "冰川俯瞰",
+      "nameZh": "冰川俯瞰",
+      "cluster": "custom",
+      "kind": "image",
+      "accent": "#8a6f3f",
+      "source": "/Users/toujing/Downloads/.dsh-glacier-crop.png",
+      "bytes": {
+        "media": 542113,
+        "preview": 142050,
+        "thumb": 20370
+      },
+      "order": 5
+    }
+  ],
+  "diagnostics": []
+}

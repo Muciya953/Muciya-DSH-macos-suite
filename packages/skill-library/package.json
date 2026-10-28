@@ -1,0 +1,35 @@
+{
+  "name": "muciya-dsh-plugin-skill-library",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browse, filter and toggle the skills this profile can see, read straight from the skills directories rather than a copy.",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test/harness.mjs"
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "engines": {
+      "dsh": ">=0.2.0-rc.2"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4"
+  }
+}

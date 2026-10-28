@@ -1,0 +1,9 @@
+# Muciya macOS suite — agent-teams
+# Drop this file into awesome-dsh-plugin's data/plugins/ and open one PR.
+# tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/<asset>.tgz   # 打好 Release 后填
+url: https://github.com/Muciya953/Muciya-DSH-macos-suite/tree/main/packages/agent-teams
+name: Muciya953/Muciya-DSH-macos-suite#agent-teams
+category: agi
+description:
+  en: "Roster, topology graph and shared task board for the agents a session is running, fed by the agentTeam projection, plus an automation console that lists launchd agents, the crontab and DSH's own clocks."
+  zh: "当前会话正在运行的智能体名册、拓扑图与共享任务看板（数据来自 agentTeam 投影），另有自动化控制台列出 launchd 任务、crontab 与 DSH 自身定时。"

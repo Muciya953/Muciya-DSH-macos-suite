@@ -1,0 +1,9 @@
+# Muciya macOS suite — skill-library
+# Drop this file into awesome-dsh-plugin's data/plugins/ and open one PR.
+# tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/<asset>.tgz   # 打好 Release 后填
+url: https://github.com/Muciya953/Muciya-DSH-macos-suite/tree/main/packages/skill-library
+name: Muciya953/Muciya-DSH-macos-suite#skill-library
+category: skill
+description:
+  en: "Every skill this harness discovers, read from the skill roots instead of a copy: source root per row, filtering, and no reinstall needed for a new skill to appear."
+  zh: "直接读取技能根而不是副本：逐条显示来源根、可筛选，新增技能无需重装即可出现。"

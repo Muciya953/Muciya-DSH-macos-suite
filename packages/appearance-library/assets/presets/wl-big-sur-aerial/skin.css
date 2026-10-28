@@ -1,0 +1,420 @@
+/*
+ * Wallpaper skin — Big Sur Aerial · 大苏尔航拍
+ *
+ * Palette deliberately untouched: every colour token stays the official shell's,
+ * so light and dark keep the exact contrast the GUI was audited with and this
+ * skin cannot make text unreadable. Only the surfaces are opened up, so the
+ * wallpaper reads through them.
+ *
+ * The rules the whole look depends on, copied from the official blue-fantasy
+ * skin because getting any of them wrong makes the wallpaper invisible:
+ *
+ *  1. --dsw-alias-bg-base must be ABSENT at rest. The Desktop shell paints it
+ *     straight onto .dshDesktopConversationSurface (the whole area between the
+ *     rails) and the caption rows, so anything opaque there is a shield over
+ *     the art. It therefore scales UP from zero, and the shell's own background
+ *     is what holds the line when a stronger scrim is asked for.
+ *  2. Dark mode is selected by body[data-ds-dark-theme], NOT by an attribute on
+ *     the html element: the theme presenter sets it on the body
+ *     (document.body.setAttribute). A dark block keyed on html never matches,
+ *     which silently leaves dark mode wearing the light palette.
+ *  3. The surface values must stay PARSEABLE CSS. An earlier revision wrote them
+ *     as colour-mix with a math.max() weight, which is invalid twice over:
+ *     math.max is not a CSS function (it is max), and even then a colour-mix
+ *     weight must be a percentage, not a plain number. Custom properties are not
+ *     validated on declaration, so the skin still loaded; the failure only
+ *     surfaced where var() consumed them, where the whole declaration went
+ *     invalid at computed-value time and background fell back to transparent.
+ *     Every sheet that paints --dsw-alias-bg-layer-2 (Settings, remote control)
+ *     became see-through and its text collided with the conversation behind it.
+ *     Use rgba() with a clamp() alpha instead.
+ *  4. Those sheets also darken their backdrop with --dsw-alias-bg-mask-1 and blur
+ *     it with --dsw-mask-blur. The shell defaults them to 24%-black and no blur,
+ *     which is not enough separation over a photograph, so this skin states both.
+ *     This skin asks for 5px: the scrim already holds the line, and a heavier
+ *     blur turns the wallpaper into grey mush behind every dialog.
+ *  5. The secondary panels and the composer card wear the menu material, not
+ *     the flat layer-2 fill. A shared rule cannot set position for them (the
+ *     settings panel is a static flex child, the market layer is fixed), so
+ *     the material rides background-color and backdrop-filter instead. The
+ *     fill is --dsw-skin-glass-fill, a literal: the Desktop shell rewrites
+ *     --dsw-menu-surface-fill to layer-2 inside the glass window. See below.
+ *
+ *  6. The transcript reserves 24px at both ends, so a line never butts against
+ *     the header rule or the composer card. The top padding rides the
+ *     scrollport; the bottom one has to ride the message container instead,
+ *     because the skin center pins the scrollport's own bottom padding to 0
+ *     with !important. See the block at the end of this sheet.
+ *
+ *  7. In the Desktop modes the shell paints a second set of surfaces - the
+ *     titlebar's version-and-mode popover, the native-action menus, the LAN
+ *     warning dialog - from its own sheet, which the rules above never reach.
+ *     Worse, it re-points two tokens this skin had already opened up: the menu
+ *     fill in the glass window, and the sidebar surface in the opaque one. The
+ *     section before the reduced-transparency block matches it on specificity
+ *     to bring all of those back in line. See it for the exact selectors.
+ *
+ * Every value also scales with --dsw-skin-scrim, which the skin center publishes
+ * on the body for its background-opacity slider (0 at rest).
+ */
+
+:root {
+  color-scheme: light dark;
+}
+
+:root {
+  color-scheme: light;
+  --dsw-alias-bg-base: rgba(250, 250, 252, calc(var(--dsw-skin-scrim, 0) * 0.46));
+  --dsw-alias-bg-layer-1: rgba(252, 252, 254, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.34), 1));
+  --dsw-alias-bg-layer-2: rgba(246, 247, 250, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.30), 1));
+  --dsw-alias-bg-layer-3: rgba(240, 242, 246, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.26), 1));
+  --dsw-alias-bg-module-platform: rgba(246, 247, 250, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.30), 1));
+  --dsw-specific-sidebar-fill: rgba(250, 250, 252, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.36), 1));
+  --dsw-specific-input-major: rgba(252, 252, 254, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.28), 1));
+  --dsw-alias-bg-mask-1: rgba(0, 0, 0, 0.36);
+  --dsw-skin-glass-fill: rgba(248, 249, 250, 0.58);
+  --dsw-skin-scrim-band: linear-gradient(180deg, rgba(250,250,252,0.18) 0%, rgba(246,247,250,0.34) 46%, rgba(240,242,246,0.54) 100%);
+  --dsw-mask-blur: blur(5px) saturate(140%);
+}
+
+body[data-ds-dark-theme] {
+  color-scheme: dark;
+  --dsw-alias-bg-base: rgba(8, 11, 19, calc(var(--dsw-skin-scrim, 0) * 0.5));
+  --dsw-alias-bg-layer-1: rgba(15, 20, 32, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.32), 1));
+  --dsw-alias-bg-layer-2: rgba(20, 26, 41, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.27), 1));
+  --dsw-alias-bg-layer-3: rgba(25, 32, 50, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.23), 1));
+  --dsw-alias-bg-module-platform: rgba(20, 26, 41, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.27), 1));
+  --dsw-specific-sidebar-fill: rgba(13, 18, 29, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.34), 1));
+  --dsw-specific-input-major: rgba(18, 23, 37, clamp(0.28, calc(1 - var(--dsw-skin-scrim, 0) * 0.25), 1));
+  --dsw-alias-bg-mask-1: rgba(0, 0, 0, 0.55);
+  --dsw-skin-glass-fill: rgba(67, 69, 74, 0.45);
+  --dsw-skin-scrim-band: linear-gradient(180deg, rgba(6,9,16,0.34) 0%, rgba(9,13,22,0.48) 46%, rgba(6,9,16,0.62) 100%);
+  --dsw-mask-blur: blur(5px) saturate(140%);
+}
+
+/* ── Menu material on the secondary panels and the composer card ──────────
+ * Settings and remote control used to paint the flat --dsw-alias-bg-layer-2
+ * fill, which reads as a hole cut into the wallpaper. They now wear the menu
+ * material: the fill the slash menu's surface layer paints, plus the frost it
+ * filters the page through. The stroke rides --dsw-elevation-stroke-color,
+ * which the shell's elevation shadows already consume.
+ *
+ * The fill is a LITERAL, never --dsw-menu-surface-fill, and that is the whole
+ * fix of 2026-10-10. The Desktop shell re-points that token to
+ * --dsw-alias-bg-layer-2 for body:is([data-dsh-desktop-mode="extended"],
+ * [data-dsh-desktop-mode="advanced"])[data-dsh-desktop-platform="darwin"]
+ * [data-dsh-desktop-material="transparent"] - the glass window, and the one
+ * this reader runs: mode=advanced, platform=darwin, material=transparent, read
+ * straight off the renderer URL in the shell's own cache. Inside that window
+ * the menu fill IS layer-2, so reading the token made every rule below resolve
+ * to the very fill these surfaces already painted: the sheet loaded, the rules
+ * matched, and nothing changed on screen. The literals are the theme's own menu
+ * surface, #f8f9fa94 light and #43454a73 dark (58% and 45% alpha), so the
+ * material no longer depends on a token the shell is free to rewrite. The frost
+ * still reads --dsw-menu-backdrop-filter, which the shell leaves alone.
+ *
+ * (Historical note: the fill must be the MENU's own surface, never
+ * --dsw-specific-menu, which the skin center re-derives per skin as
+ * color-mix(layer-1 60%, transparent) and which resolves visibly darker.)
+ *
+ * Three structural facts, all checked against this build:
+ *  - A full-screen layer keeps its card in a CHILD (the market overlay, the
+ *    image lightbox, the account platform), so such a layer must never take a
+ *    fill itself: that would wash the whole viewport. The market layer is
+ *    excluded by name and its card named directly; the lightbox is excluded by
+ *    the aria-hidden mask it holds; the account platform is the one that puts a
+ *    real header element first, which none of the panels that want the menu
+ *    material does.
+ *  - Nothing here touches position or inset. The settings panel is a static
+ *    flex child while the market layer is position: fixed, and no single rule
+ *    can set position for both without breaking one of them.
+ *  - The composer card takes the fill only. Its frost already belongs to the
+ *    skin center's input-card-blur slider, and a backdrop-filter here would
+ *    hand the composer card a containing block again (issue #1724).
+ */
+[data-shortcut-modal="settings"],
+[role="dialog"][aria-modal="true"]:not(.dshMarketOverlay):not(:has(> header)):not(:has(> [aria-hidden="true"])),
+[role="alertdialog"][aria-modal="true"]:not(.dshMarketOverlay):not(:has(> header)):not(:has(> [aria-hidden="true"])),
+.dshMarketOverlayPanel {
+  background-color: var(--dsw-skin-glass-fill, var(--dsw-alias-bg-layer-2));
+  -webkit-backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+  backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);
+}
+
+[data-composer-card] {
+  background-color: var(--dsw-skin-glass-fill, var(--dsw-alias-bg-layer-2));
+  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);
+}
+
+/* ── The transcript stops dead where the composer begins ─────────────────
+ * The composer seat is sticky at the bottom of the scroll area (z-index 7), so
+ * message text keeps rolling underneath it. The shell hides that with a 36px
+ * occlusion gradient painted in --dsw-alias-bg-base, and the skin center
+ * deletes that gradient outright while a skin paints a backdrop so the art
+ * reaches the viewport edge. The frost that would otherwise disguise the text
+ * cannot help either: issue #1724 forces it onto a body-level sibling at
+ * z-index -1, which sits BEHIND the very text it should hide, so blurring the
+ * band only turns the collision into a smudge - the text is still there.
+ *
+ * So this band does not frost anything: it paints the backdrop it stands on.
+ * The wallpaper is one image (the skin layer's own assets/wallpaper.jpg under
+ * the manifest's scrim gradient), and a fixed background attachment
+ * reproduces exactly the pixels the reader would see there anyway. Being
+ * opaque, the band hides everything painted below it - the transcript - while
+ * the band itself is invisible against the art it copies. Above the seat the
+ * transcript is untouched: the text is simply gone from the line where the
+ * composer starts, with no blur and no fade involved.
+ *
+ * The card is not touched: the band rides in the seat's own stacking context
+ * at z-index -1, above the transcript and below the input card, so the card
+ * keeps its translucent fill and its own frost. Every skin here ships an
+ * image wallpaper, so the copy always has a source.
+ */
+[data-phase="active"] [data-dsh-part="scrollport"] > [data-composer-seat]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--dsw-skin-scrim-band, linear-gradient(180deg, rgba(250,250,252,0.18) 0%, rgba(246,247,250,0.34) 46%, rgba(240,242,246,0.54) 100%)), url("assets/wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* ── Menu material on the sidebar, and the wallpaper behind it ─────────────
+ * The wallpaper is already a fixed, full-window layer (z-index -2); it only
+ * LOOKED cut off because the sidebar painted an opaque slab over it. That slab
+ * belongs to the sidebar plugin's root, a CSS-Modules hashed class we must not
+ * name, so the fill is swapped by re-pointing the skin's own
+ * --dsw-specific-sidebar-fill token on the column that carries the stable
+ * data-pane="sidebar" hook. That column goes transparent and takes the frost
+ * instead, which leaves exactly the menu surface: the fill still painted by the
+ * inner root, the blur now on the column, over the wallpaper.
+ * That inner root is the ONLY element in the subtree that reads the token; the
+ * column has no fixed descendant to re-anchor; and the menus opened from the
+ * sidebar are portalled to the body, so they keep blurring the page.
+ */
+[data-pane="sidebar"] {
+  --dsw-specific-sidebar-fill: var(--dsw-skin-glass-fill, var(--dsw-alias-bg-layer-1));
+  background-color: transparent;
+  -webkit-backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+  backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+}
+
+/* ── The sidebar column is the sheet of glass ─────────────────────────────
+ * The glass this skin paints on the sidebar belongs on the box that spans the
+ * whole column, not on the pane inside it, for two measured reasons:
+ *
+ *   collapsed. Darwin gives the rail a width of its own -
+ *     [advanced][darwin][data-sidebar-collapsed] .dshDesktopUpstreamSidebar
+ *       { width: 56px; margin: 0 auto }
+ *   - centring that 56px rail inside a 90px column, so a fill painted on the
+ *   pane stopped 17px short of each edge and the raw, unblurred wallpaper came
+ *   through as a hard vertical seam down both sides of the icons.
+ *
+ *   expanded. The shell reserves the top 20px of the column for the traffic
+ *   lights ([advanced][darwin] .dshDesktopUpstreamSidebar { padding-top: 20px })
+ *   and the pane, the element that paints --dsw-specific-sidebar-fill, starts
+ *   below it, so the strip above carried the column's frost but no fill and read
+ *   a full 20px band lighter than the sidebar under it.
+ *
+ * Both are one and the same gap: fill on a box narrower than the column. So the
+ * fill and the frost live on .dshDesktopSidebarSurface - opened up in the
+ * desktop-modes block further down - and the pane gives its own up: its
+ * --dsw-specific-sidebar-fill goes transparent, so the inner root, the only
+ * reader of that token, paints nothing, and its frost is dropped so the
+ * wallpaper is not blurred twice over the middle.
+ *
+ * The caption strip the motion sheet used to draw across those 20px goes with
+ * it. It is neutralised here rather than deleted, so that a skin still shipping
+ * it cannot stack a second sheet of glass on the top of the column.
+ */
+body[data-dsh-desktop-mode] [data-pane="sidebar"] {
+  --dsw-specific-sidebar-fill: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* ── The collapsed rail sits in a narrower column ─────────────────────────
+ * The shell sizes that column in JavaScript - collapsedSidebarWidth() returns
+ * 90 for advanced mode on darwin - and writes the width inline on
+ * .dshDesktopFrame, so an author-important declaration is the one lever CSS
+ * has here. 72px leaves the shell's own 56px rail centred with 8px of glass on
+ * either side, and the rail keeps the plugin's 36px icon buttons on the
+ * column's centre line: the collapsed pane pads itself 10px inline, leaving
+ * exactly 36px of content box for them to fill edge to edge rather than hug
+ * one side.
+ *
+ * Scoped to advanced mode on darwin and to a closed rightbar on purpose. Only
+ * that combination starts from the 90px column; extended mode and win32 use
+ * the 56px rail, which this rule would widen, and with the rightbar open its
+ * width is computed in JavaScript too - the rule replaces the whole
+ * grid-template-columns declaration, so it must not run while that column is
+ * anything but zero.
+ */
+body[data-dsh-desktop-mode] .dshDesktopFrame[data-desktop-mode="advanced"][data-desktop-platform="darwin"][data-sidebar-collapsed][data-rightbar-collapsed] {
+  grid-template-columns: 72px minmax(0, 1fr) 0px !important;
+}
+
+/* ── The collapsed rail drops the workspace region's two icons ────────────
+ * ui-workspace fills the sidebar's "sidebar.workspaces" hole and branches on
+ * the shell's wide flag. The expanded browser draws a full section header -
+ * the "工作区" label, the view-options menu, the search field and the
+ * add-workspace button - while the rail state renders only two 36px entry
+ * controls off that same header: the search button and the add-workspace
+ * button. Those two are the only workspace controls left once the column
+ * collapses, and they read as two more rows of a primary navigation the rail
+ * otherwise mirrors one for one, so they are hidden there.
+ *
+ * Located by accessible name, not by className: this package's classes are
+ * CSS-Modules hashes (tPVXea_*) that move with every build, while aria-label
+ * is the component's own contract - t("search.sessions.aria") and
+ * t("workspace.add"). Both dictionaries are stated because the panel follows
+ * the interface language, not the skin. Only the collapsed state is scoped,
+ * so the expanded header keeps all four of its controls; the two shortcuts
+ * (session.search, workspace.add) keep working too - each expands the rail
+ * before it acts.
+ */
+[data-sidebar-collapsed] [data-pane="sidebar"] button[aria-label="搜索会话"],
+[data-sidebar-collapsed] [data-pane="sidebar"] button[aria-label="Search sessions"],
+[data-sidebar-collapsed] [data-pane="sidebar"] button[aria-label="添加工作区"],
+[data-sidebar-collapsed] [data-pane="sidebar"] button[aria-label="Add workspace"] {
+  display: none !important;
+}
+
+/* ── Desktop modes: the shell's own panels and menus ──────────────────────
+ * 兼容/扩展/增强 mode is drawn by the Desktop shell, not by the client, and
+ * four of its surfaces are styled from the shell's own sheet: the fixed
+ * titlebar, the version-and-mode popover, the native-action menus and the LAN
+ * warning dialog. The rules above never reach them, and two shell rules
+ * actively repaint what this skin had already opened up:
+ *
+ *   body:is([data-dsh-desktop-mode="extended"], [data-dsh-desktop-mode="advanced"])
+ *       [data-dsh-desktop-platform="darwin"][data-dsh-desktop-material="transparent"]
+ *     { --dsw-menu-surface-fill: var(--dsw-alias-bg-layer-2) }
+ *       the glass window. Every menu - the slash menu, context menus, dropdowns
+ *       - reads that token, so in 增强模式 the menus went opaque again. The rule
+ *       below states the same three attributes plus the one the skin scoper
+ *       adds (data-dsh-skin), so it outranks the shell and the menus are glass
+ *       once more, wearing the same literal the panels, the composer card and
+ *       the sidebar already wear.
+ *   body:is([data-dsh-desktop-mode="extended"], [data-dsh-desktop-mode="advanced"])
+ *       [data-dsh-desktop-material="off"] .dshDesktopSidebarSurface
+ *     { background: var(--dsw-alias-bg-layer-1) }
+ *       the opaque window. There the slab is painted by the sidebar SURFACE
+ *       instead of by the inner root, so it has to be re-opened on that
+ *       element too, or the sidebar is the one opaque thing left.
+ *
+ * The dialog roles, data-pane and data-composer-card are stable hooks; these
+ * dshDesktop classes are the shell's own and equally stable. Nothing here uses
+ * !important: every selector carries body[data-dsh-desktop-mode], one
+ * attribute more than the shell's, which is exactly the margin needed.
+ */
+body[data-dsh-desktop-mode="extended"][data-dsh-desktop-platform="darwin"][data-dsh-desktop-material="transparent"],
+body[data-dsh-desktop-mode="advanced"][data-dsh-desktop-platform="darwin"][data-dsh-desktop-material="transparent"] {
+  --dsw-menu-surface-fill: var(--dsw-skin-glass-fill);
+}
+
+body[data-dsh-desktop-mode] .dshDesktopSidebarSurface {
+  --dsw-specific-sidebar-fill: var(--dsw-skin-glass-fill, var(--dsw-alias-bg-layer-1));
+  background-color: var(--dsw-skin-glass-fill, var(--dsw-alias-bg-layer-1));
+  -webkit-backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+  backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+}
+
+body[data-dsh-desktop-mode] .dshDesktopVersionPopover,
+body[data-dsh-desktop-mode] .dshDesktopActionMenu,
+body[data-dsh-desktop-mode] .dshDesktopSettingsDialog {
+  background-color: var(--dsw-skin-glass-fill, var(--dsw-alias-bg-layer-1));
+  -webkit-backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+  backdrop-filter: var(--dsw-menu-backdrop-filter, blur(40px) saturate(150%));
+  --dsw-elevation-stroke-color: var(--dsw-alias-border-l3);
+}
+
+body[data-dsh-desktop-mode] .dshDesktopSettingsDialogBackdrop {
+  background-color: var(--dsw-alias-bg-mask-1);
+  -webkit-backdrop-filter: var(--dsw-mask-blur);
+  backdrop-filter: var(--dsw-mask-blur);
+}
+
+/* ── Breathing room at both ends of the transcript ────────────────────────
+ * Scrolled to either end the text used to butt straight against the chrome:
+ * the first line touched the header rule, the last ran under the composer
+ * card. Both ends now reserve 24px, the band a line fades into as it leaves
+ * the viewport.
+ *
+ * The top padding sits on the scrollport itself. The bottom one cannot: the
+ * skin center's own runtime sheet pins the scrollport's padding-bottom to 0
+ * with !important (its composer clearance) and the composer seat is sticky to
+ * the bottom edge, so anything there is swallowed. It sits on the message
+ * container instead, which terminates exactly at the seat's top edge, so its
+ * padding is the gap the reader actually sees.
+ *
+ * Both rules are scoped to data-phase="active", the value the conversation
+ * root carries only while a transcript is mounted. In the hero phase the
+ * scrollport centres its children, where an extra 24px would push the
+ * greeting off centre by half of it.
+ */
+[data-phase="active"] [data-dsh-part="scrollport"] {
+  padding-top: 24px;
+}
+[data-phase="active"] [data-dsh-part="scrollport"] > [data-slot="conversation.session"] > div {
+  padding-bottom: 24px;
+}
+
+/* ── Reduced transparency ─────────────────────────────────────────────────
+ * The shell already hands its darwin sidebar an opaque fill when the reader
+ * asks for reduced transparency, but these rules outrank it, so the same
+ * surfaces are restored to plain opaque fills here. The sidebar keeps its
+ * transparent column: only the token it hands down changes, so the inner root
+ * paints the opaque layer instead of the menu fill.
+ */
+@media (prefers-reduced-transparency: reduce) {
+  [data-shortcut-modal="settings"],
+  [role="dialog"][aria-modal="true"]:not(.dshMarketOverlay):not(:has(> header)):not(:has(> [aria-hidden="true"])),
+[role="alertdialog"][aria-modal="true"]:not(.dshMarketOverlay):not(:has(> header)):not(:has(> [aria-hidden="true"])),
+  .dshMarketOverlayPanel {
+    background-color: var(--dsw-alias-bg-layer-2);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  [data-composer-card] {
+    background-color: var(--dsw-specific-input-major, var(--dsw-alias-bg-layer-2));
+  }
+
+  [data-pane="sidebar"] {
+    --dsw-specific-sidebar-fill: var(--dsw-alias-bg-layer-1);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  body[data-dsh-desktop-mode="extended"][data-dsh-desktop-platform="darwin"][data-dsh-desktop-material="transparent"],
+  body[data-dsh-desktop-mode="advanced"][data-dsh-desktop-platform="darwin"][data-dsh-desktop-material="transparent"] {
+    --dsw-menu-surface-fill: var(--dsw-alias-bg-layer-2);
+  }
+
+  body[data-dsh-desktop-mode] .dshDesktopSidebarSurface {
+    --dsw-specific-sidebar-fill: var(--dsw-alias-bg-layer-1);
+    background-color: var(--dsw-alias-bg-layer-1);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  body[data-dsh-desktop-mode] .dshDesktopVersionPopover,
+  body[data-dsh-desktop-mode] .dshDesktopActionMenu,
+  body[data-dsh-desktop-mode] .dshDesktopSettingsDialog {
+    background-color: var(--dsw-alias-bg-layer-1);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  body[data-dsh-desktop-mode] .dshDesktopSettingsDialogBackdrop {
+    background-color: var(--dsw-alias-bg-mask-1);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

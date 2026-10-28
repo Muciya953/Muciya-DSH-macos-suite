@@ -1,0 +1,5 @@
+# One bundle row. `name` is the package name so a marketplace install resolves it from
+# node_modules; a hand-mounted checkout points the same row at lib/index.js instead.
+- insert:
+    - id: muciya-usage
+      name: muciya-dsh-plugin-usage

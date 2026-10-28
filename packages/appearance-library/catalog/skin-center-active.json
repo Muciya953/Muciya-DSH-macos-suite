@@ -1,0 +1,13 @@
+{
+  "active": "wl-tahiti-waves",
+  "initialized": true,
+  "background": {
+    "enabled": true,
+    "backgroundOpacity": 0,
+    "backgroundBlurEmpty": 0,
+    "backgroundBlurContent": 0,
+    "inputCardBlur": 6,
+    "bubbleOpacity": 20,
+    "bubbleBlur": 3
+  }
+}

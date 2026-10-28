@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.linxin666.org/dsh-skin/v2.json",
+  "skinManifestVersion": 2,
+  "id": "wl-catalina-clouds",
+  "name": "卡塔利娜云海",
+  "nameEn": "Catalina Clouds",
+  "author": "macOS 系统壁纸 · DSH 外观库导出",
+  "tagline": "桌面图片的 MobileAsset 缓存，6K 母版 · 起于 Apple 资源",
+  "description": "Catalina Clouds（卡塔利娜云海）由本机 macOS 资源导出为 DSH 皮肤：壁纸垫在半透明面板之下，浅色与深色各自带一层可读性纱罩，配色 token 完全沿用官方外壳，只放开表面透明度。",
+  "tags": [
+    "wallpaper",
+    "macos",
+    "assets-v2",
+    "still"
+  ],
+  "accent": "#8a6f3f",
+  "order": 2000,
+  "version": "1.0.0",
+  "license": "Apple 系统资源，仅供本机个人使用",
+  "sourceUrl": "file:///System/Library/AssetsV2/com_apple_MobileAsset_DesktopPicture/866514bba2be10285b3c5bb2dfef3c40a6946829.asset/AssetData/Catalina%20Clouds.heic",
+  "preview": {
+    "light": "preview/wallpaper.jpg",
+    "dark": "preview/wallpaper.jpg"
+  },
+  "contributes": {
+    "stylesheet": "skin.css",
+    "backgroundMedia": {
+      "light": {
+        "type": "image",
+        "src": "assets/wallpaper.jpg",
+        "scrim": "linear-gradient(180deg, rgba(250,250,252,0.18) 0%, rgba(246,247,250,0.34) 46%, rgba(240,242,246,0.54) 100%)"
+      },
+      "dark": {
+        "type": "image",
+        "src": "assets/wallpaper.jpg",
+        "scrim": "linear-gradient(180deg, rgba(6,9,16,0.34) 0%, rgba(9,13,22,0.48) 46%, rgba(6,9,16,0.62) 100%)"
+      }
+    }
+  }
+}

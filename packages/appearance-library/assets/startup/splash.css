@@ -1,0 +1,304 @@
+/*
+  Startup splash: the boot film over the app's own boot gap.
+
+  Three layers, one stack:
+
+    .dsh-splash__waterline  the seam, lit from the first paint so the wait reads
+                            as water rather than as nothing
+    .dsh-splash__split      near-black veil, in two halves that meet at the seam
+    .dsh-splash__film       the film, screen-blended so its black background is a no-op
+
+  The film opens on eight near-black frames, and a bare veil over those is the
+  same picture as a window that never painted at all. The seam separates the two,
+  and it is also the line the whale breaks through, so it carries both jobs.
+
+  Motion rules: only `opacity` and `transform` animate; the opening is ease-out
+  with no run-up; the reduced-motion query keeps every layer and swaps the
+  parting for a cross-fade.
+*/
+
+#dsh-startup-splash {
+  --dsl-veil: 0.92;
+  /* Film coordinates are 62.5%: measured off the clip's own seam, sampled on the
+     left and right tenths of frame where the whale and its splash cannot reach.
+     The script overwrites this with the window-space equivalent of the same
+     line; the value here only has to be right when that never runs. */
+  --dsl-waterline: 62.5%;
+  --dsl-reveal: 900ms;
+  --dsl-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  contain: layout style paint;
+  background: transparent;
+}
+
+/* The film sits above the veil halves and adds light to them. */
+.dsh-splash__stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+/* The film fades itself in and out, so nothing here touches its opacity. A
+   cross-fade laid over its own only stretches an opening that is still black,
+   and buys a compositor layer to animate a picture with nothing to say yet. */
+.dsh-splash__film {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  background: transparent;
+  mix-blend-mode: screen;
+}
+
+/* The film has faded itself out by the time the veil parts; this only takes the
+   layer down so it cannot sit over the window once the veil is gone. */
+#dsh-startup-splash[data-phase="reveal"] .dsh-splash__film {
+  opacity: 0;
+}
+
+/* The veil, in two halves meeting at the waterline.
+
+   Each half is an opaque block that leaves on its own translation. The first
+   version animated `clip-path` instead: that cannot run on the compositor, so a
+   full-viewport layer of six million pixels was repainted on every frame of the
+   reveal. A transform on two blocks is the same picture for a fraction of it. */
+.dsh-splash__split {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #000;
+  opacity: var(--dsl-veil);
+  will-change: transform, opacity;
+  transition: transform var(--dsl-reveal) var(--dsl-ease) 80ms;
+}
+
+.dsh-splash__split--top {
+  top: 0;
+  height: var(--dsl-waterline);
+}
+
+.dsh-splash__split--bottom {
+  top: var(--dsl-waterline);
+  bottom: 0;
+}
+
+/* Two things ride the leading edge, and they are separate layers on purpose.
+
+   ::before is a short gradient hanging *outside* the block: painted inside, its
+   transparent end would look straight through to the block's own opaque
+   background and the edge would stay just as hard. It reads as a water film
+   thinning out.
+
+   ::after is a lit lip sitting on the edge itself. Without it the reveal is two
+   black rectangles sliding apart, which is what a curtain does; with it the
+   water the veil was holding lets go of light as it opens.
+
+   Both exist only while the halves move: closed, they would sit in the middle of
+   a veil that is supposed to be sealed. */
+.dsh-splash__split::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 64px;
+  transform: scaleY(0);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.dsh-splash__split--top::before {
+  bottom: -64px;
+  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0) 100%);
+  transform-origin: top;
+}
+
+.dsh-splash__split--bottom::before {
+  top: -64px;
+  background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0) 100%);
+  transform-origin: bottom;
+}
+
+.dsh-splash__split::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(150, 210, 255, 0) 0%,
+    rgba(190, 230, 255, 0.7) 28%,
+    rgba(238, 249, 255, 0.95) 50%,
+    rgba(190, 230, 255, 0.7) 72%,
+    rgba(150, 210, 255, 0) 100%
+  );
+  box-shadow: 0 0 12px 2px rgba(120, 190, 255, 0.4);
+  transition: opacity 220ms ease-out;
+}
+
+.dsh-splash__split--top::after {
+  bottom: 0;
+}
+
+.dsh-splash__split--bottom::after {
+  top: 0;
+}
+
+#dsh-startup-splash[data-phase="reveal"] .dsh-splash__split::before {
+  transform: scaleY(1);
+}
+
+#dsh-startup-splash[data-phase="reveal"] .dsh-splash__split::after {
+  opacity: 1;
+}
+
+/* Part at the waterline: the top half retracts upward, the bottom one follows a
+   beat later and slightly slower, so the break reads as a surface opening rather
+   than a curtain drawing. Both leave by exactly their own height; anything less
+   strands a line of veil on screen. */
+#dsh-startup-splash[data-phase="reveal"] .dsh-splash__split--top {
+  transform: translateY(-100%);
+}
+
+#dsh-startup-splash[data-phase="reveal"] .dsh-splash__split--bottom {
+  transform: translateY(100%);
+  transition: transform calc(var(--dsl-reveal) * 0.94) var(--dsl-ease) 120ms;
+}
+
+#dsh-startup-splash[data-phase="done"] {
+  opacity: 0;
+  transition: opacity 160ms linear;
+}
+
+/* The seam.
+
+   It is lit before the film is, because the film's first third of a second is
+   black and a black veil with nothing on it is indistinguishable from a window
+   that never painted. At rest it is the waterline; on reveal it is the line the
+   whale came through. */
+.dsh-splash__waterline {
+  position: absolute;
+  top: var(--dsl-waterline);
+  left: 0;
+  right: 0;
+  height: 1px;
+  opacity: 0;
+  transform: scaleX(0.42);
+  background: linear-gradient(
+    90deg,
+    rgba(120, 190, 255, 0) 0%,
+    rgba(150, 210, 255, 0.55) 22%,
+    rgba(215, 240, 255, 0.9) 50%,
+    rgba(150, 210, 255, 0.55) 78%,
+    rgba(120, 190, 255, 0) 100%
+  );
+  box-shadow:
+    0 0 18px 3px rgba(110, 180, 255, 0.32),
+    0 0 4px 1px rgba(210, 238, 255, 0.55);
+  transition:
+    opacity 300ms ease-out,
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Waiting: the seam is the only thing on screen, so it carries the picture. */
+#dsh-startup-splash[data-phase="boot"] .dsh-splash__waterline {
+  opacity: 0.52;
+  transform: scaleX(1);
+}
+
+/* Playing: the film has its own bright waterline, so ours drops back to an
+   anchor. Two seams at full strength at slightly different heights read as a
+   registration error, not as depth. */
+#dsh-startup-splash[data-phase="play"] .dsh-splash__waterline {
+  opacity: 0.24;
+  transform: scaleX(1);
+}
+
+/* The last second of the film.
+
+   The film fades its own seam out as it ends, so the line has to be handed over
+   before it goes: one second out, ours rises to the strength it holds while
+   waiting, and the parting then starts from a line that is already lit instead of
+   striking one out of black. Linear on purpose, this is a hand-over and not an
+   entrance. */
+#dsh-startup-splash[data-tail="1"] .dsh-splash__waterline {
+  opacity: 0.52;
+  transform: scaleX(1);
+  transition:
+    opacity 1000ms linear,
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* One gesture: catch light, stretch, sink, and then get out of the way.
+
+   It runs for a third of the parting and is gone before the opening is half
+   open. Its job is to say "the surface is here" while the screen is still black;
+   once the two edges are carrying their own lit lips, a seam still burning in the
+   middle would read as a third line cutting across the window. The first keyframe
+   matches the rest state so the reveal cannot blink it out. */
+@keyframes dsh-splash-seam {
+  0% {
+    opacity: 0.52;
+    transform: scaleX(1) scaleY(1);
+  }
+  28% {
+    opacity: 0.72;
+    transform: scaleX(1.01) scaleY(2.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1.03) scaleY(0.6);
+  }
+}
+
+#dsh-startup-splash[data-phase="reveal"] .dsh-splash__waterline {
+  transition: none;
+  animation: dsh-splash-seam 200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* A window that is not going to play the film at all. */
+#dsh-startup-splash[data-phase="skipped"] {
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The veil still goes away, it just stops doing it as a translation. */
+  .dsh-splash__split {
+    transition: opacity 320ms linear;
+  }
+
+  #dsh-startup-splash[data-phase="reveal"] .dsh-splash__split {
+    transform: none;
+    opacity: 0;
+  }
+
+  /* The lip and the soft edge only dress a translation; without one they are a
+     grey band and a stray bright hairline across an otherwise flat veil. */
+  .dsh-splash__split::before,
+  .dsh-splash__split::after {
+    display: none;
+  }
+
+  /* The seam is still the only thing saying the wait is a wait, so it dims with
+     the veil instead of being removed. */
+  .dsh-splash__waterline {
+    transition: opacity 240ms linear;
+  }
+
+  #dsh-startup-splash[data-phase="reveal"] .dsh-splash__waterline {
+    animation: none;
+    opacity: 0;
+    transform: none;
+  }
+}
