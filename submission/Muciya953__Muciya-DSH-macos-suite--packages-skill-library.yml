@@ -1,6 +1,6 @@
 # Muciya macOS suite — skill-library
 # Drop this file into awesome-dsh-plugin's data/plugins/ and open one PR.
-# tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/<asset>.tgz   # 打好 Release 后填
+tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/muciya-dsh-plugin-skill-library-1.0.0.tgz
 url: https://github.com/Muciya953/Muciya-DSH-macos-suite/tree/main/packages/skill-library
 name: Muciya953/Muciya-DSH-macos-suite#skill-library
 category: skill
