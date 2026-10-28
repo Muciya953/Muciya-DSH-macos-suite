@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/brand/dsh.png" width="56" height="56" alt="DSH">&nbsp;&nbsp;&nbsp;
+  <img src="assets/brand/dsh.png" width="62" height="62" alt="DSH" align="middle">&nbsp;&nbsp;&nbsp;
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/brand/apple-on-dark.svg">
     <img src="assets/brand/apple-on-light.svg" width="56" height="56" alt="macOS">
