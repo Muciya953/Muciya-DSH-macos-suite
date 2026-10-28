@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="assets/brand/dsh.png" width="56" height="56" alt="DSH">
+  <img src="assets/brand/dsh.png" width="56" height="56" alt="DSH">&nbsp;&nbsp;&nbsp;
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/brand/apple-on-dark.svg">
-    <img src="assets/brand/apple-on-light.svg" width="52" height="52" alt="macOS">
+    <img src="assets/brand/apple-on-light.svg" width="56" height="56" alt="macOS">
   </picture>
 </p>
 
-<h1 align="center">Muciya DSH macOS 套件</h1>
+<h1 align="center">Muciya DSH macOS suite</h1>
 
 <p align="center"><sub>五个可独立安装的 DSH Web 插件，为 macOS 上的 DSH Desktop 打造</sub></p>
 

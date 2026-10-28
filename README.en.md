@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="assets/brand/dsh.png" width="56" height="56" alt="DSH">
+  <img src="assets/brand/dsh.png" width="56" height="56" alt="DSH">&nbsp;&nbsp;&nbsp;
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/brand/apple-on-dark.svg">
-    <img src="assets/brand/apple-on-light.svg" width="52" height="52" alt="macOS">
+    <img src="assets/brand/apple-on-light.svg" width="56" height="56" alt="macOS">
   </picture>
 </p>
 
-<h1 align="center">Muciya DSH macOS Suite</h1>
+<h1 align="center">Muciya DSH macOS suite</h1>
 
 <p align="center"><sub>Five independently installable DSH Web plugins, built for DSH Desktop on macOS</sub></p>
 

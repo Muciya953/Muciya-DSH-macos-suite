@@ -1,4 +1,4 @@
-# Muciya DSH macOS 套件 · 使用手册
+# Muciya DSH macOS suite · 使用手册
 
 仓库 `Muciya-DSH-plugin-macos-suite`，**2.0.0** 起是**五个可独立安装的插件**，不再是
 "一个包装四个面板"。五个包各有自己的 `package.json`、`cordis.patch.yml`、宿主半与浏览器半；
@@ -128,7 +128,7 @@ README 是否够评审。它**不启动宿主**。
 
 ### A.2 安装（1.x）
 
-**从插件市场**：在市场里搜「Muciya DSH macOS Suite」，或按包名安装：
+**从插件市场**：在市场里搜「Muciya DSH macOS suite」，或按包名安装：
 
 ```sh
 dsh plugin install muciya-dsh-plugin-macos-suite
