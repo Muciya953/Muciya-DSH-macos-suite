@@ -1,5 +1,7 @@
 # Muciya DSH macOS Suite
 
+**English** | [简体中文](README.zh.md)
+
 Five DSH Web plugins that happen to live in one repository. Each one is a real bundle: its own
 `package.json`, its own `cordis.patch.yml` row, its own Host half and its own browser half.
 
@@ -26,15 +28,31 @@ want; a broken one costs only itself.
 
 ## Install
 
-### As marketplace plugins
+### From release assets (no build step)
+
+Every plugin is published as a prebuilt tarball on the
+[releases page](https://github.com/Muciya953/Muciya-DSH-macos-suite/releases), so installing needs no
+build approval:
 
 ```sh
-dsh plugin add github:OWNER/REPO/packages/skill-library
-dsh plugin add github:OWNER/REPO/packages/appearance-library
-dsh plugin add github:OWNER/REPO/packages/agent-teams
-dsh plugin add github:OWNER/REPO/packages/usage
-dsh plugin add github:OWNER/REPO/packages/plugin-library
+dsh plugin add https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/muciya-dsh-plugin-usage-1.0.0.tgz
 ```
+
+Swap the asset name for `muciya-dsh-plugin-skill-library`, `muciya-dsh-plugin-appearance-library`,
+`muciya-dsh-plugin-agent-teams` or `muciya-plugin-library`, each at version `1.0.0`.
+
+### From the repository
+
+```sh
+dsh plugin add github:Muciya953/Muciya-DSH-macos-suite/packages/skill-library
+dsh plugin add github:Muciya953/Muciya-DSH-macos-suite/packages/appearance-library
+dsh plugin add github:Muciya953/Muciya-DSH-macos-suite/packages/agent-teams
+dsh plugin add github:Muciya953/Muciya-DSH-macos-suite/packages/usage
+dsh plugin add github:Muciya953/Muciya-DSH-macos-suite/packages/plugin-library
+```
+
+This route runs a build in the target profile, so DSH asks for `allowBuilds`. The prebuilt `lib/`
+directories are committed, which means a plain clone already contains installable packages.
 
 ### As local plugins in a profile
 
@@ -59,8 +77,8 @@ node scripts/check-packages.mjs
 
 Offline structural check across the five packages: bundle patch declared, web client declared, row
 names an id and an entry, browser half is a real `__ModuleLoader__.load` envelope with the identity the
-Host half expects, no leftover suite-wide API prefix, README long enough to review. It does not boot
-the harness.
+Host half expects, no leftover suite-wide API prefix, README long enough to review, and every merged
+feature module still present and wired. It does not boot the harness.
 
 ## Layout
 
@@ -83,8 +101,9 @@ shipped as packages; `scripts/build-package.mjs` shows how to turn one into a pa
 
 ## Documents
 
+- `README.zh.md` — 本文件的中文版
 - `MANUAL.zh.md` — 安装、挂载、退役旧行、故障排查（中文）
-- `PUBLISH.md` — 打包与发布前检查
+- `PUBLISH.md` — 打包、发布与投稿收录的完整流程
 - `CHANGELOG.md` — 版本变更
 
 ## License
