@@ -1,6 +1,6 @@
 # Muciya macOS suite — agent-teams
 # Drop this file into awesome-dsh-plugin's data/plugins/ and open one PR.
-tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.0.0/muciya-dsh-plugin-agent-teams-1.0.0.tgz
+tarball: https://github.com/Muciya953/Muciya-DSH-macos-suite/releases/download/v1.1.0/muciya-dsh-plugin-agent-teams-1.0.0.tgz
 url: https://github.com/Muciya953/Muciya-DSH-macos-suite/tree/main/packages/agent-teams
 name: Muciya953/Muciya-DSH-macos-suite#agent-teams
 category: agi
