@@ -1,3 +1,24 @@
+## 2.2.0 — 2026-10-29
+
+给用量统计去掉「Token 银行（鲸元券）」。
+
+### Removed
+
+- `packages/usage`：整个第三个 tab——`VoucherCard`（含 JSDoc）、`voucher.ts` 区段（`TOKENS_PER_WHALE_YUAN` /
+  `faceValue` / `voucherData` / `formatDenomination` / `voucherSerial` / `loadVoucherArt` / `drawVoucher`）、
+  `voucher-art.generated.ts` 区段（内嵌 base64 券面图）、`BANK_ALL_DAYS`、`bankDay`/`bankSelection`/`bankDayLoad`/
+  `bankDayView`/`bankWindow` 五个派生量、15 个 `usage.bank.*` 与 `usage.tab.bank` i18n 键（中英各一份）、
+  `voucherPreview` 的 css-module 映射与 `.cvtkAW_voucherPreview canvas` 规则。客户端 2606 → 2469 行。
+- 根 `README.md`：包表与用量段里的「鲸元券」条目。
+
+### Changed
+
+- 设置分区只剩两个 tab：**用量**（当日用量 / 余额 / 趋势）与 **个人套餐**（各供应商配额窗口）。
+- 宿主半的 `spendWatch` / `observedSpend` **保留**：它是「余额下降量累计」（充值只让余额上升），属通用消费监控
+  而非券专属，删它要改字段、`accrueDeepSeekSpend()`、持久化与 overview 四处，并会让已有
+  `provider-snapshots.json` 里的 `spendWatch` 变孤儿。只同步了 `lib/index.js:734` 的注释表述。
+- 版本：根包 2.1.0 → 2.2.0，`packages/usage` 1.0.0 → 1.1.0。
+
 ## 2.1.0 — 2026-10-28
 
 把七个本地旧插件的功能全部搬进五包并停用旧行；旧插件本身已备份归档。

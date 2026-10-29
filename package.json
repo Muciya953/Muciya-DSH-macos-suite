@@ -1,6 +1,6 @@
 {
   "name": "muciya-dsh-plugin-macos-suite",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "description": "The Muciya macOS suite for DSH Web: five independently installable plugins — plugin library, skill library, appearance library, agent teams and usage.",
   "license": "MIT",
   "author": "Muciya953",

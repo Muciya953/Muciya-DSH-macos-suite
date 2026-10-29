@@ -34,7 +34,7 @@ bundle：自己的 `package.json`、自己的 `cordis.patch.yml` 挂载行、自
 | 技能库 | `muciya-dsh-plugin-skill-library` | `skill` | 本机技能总览与筛选 |
 | 外观库 | `muciya-dsh-plugin-appearance-library` | `theme` | 壁纸、影片皮肤、航拍、开机动画 |
 | 智能体团队 | `muciya-dsh-plugin-agent-teams` | `agi` | 花名册、任务看板、自动化控制台 |
-| 用量统计 | `muciya-dsh-plugin-usage` | `usage` | 台账、余额、定价、鲸元券 |
+| 用量统计 | `muciya-dsh-plugin-usage` | `usage` | 台账、余额、峰谷定价、侧栏消费卡 |
 
 以前是一个包用一份 `lib/client.js` 画四个面板。DSH 的客户端模块就是一个包，那种形态有两个代价：首屏前
 要下载并执行全部面板，一个面板的 `apply` 抛异常会带走其他面板。现在每包一行、一个宿主半、一个浏览器半。
@@ -164,7 +164,6 @@ node scripts/check-packages.mjs      # 174 项：bundle/client 声明、行 id �
 - **余额探测**：对提供余额接口的供应商查询余额与套餐，覆盖 DeepSeek、Moonshot、OpenRouter、SiliconFlow、
   Z.ai、MiniMax、Kimi Coding、Codex 等十余家；单条失败只清该条，不影响另一条。
 - **观测消费**：余额下降量单独累计（充值只让余额上升），与折叠估算并列显示。
-- **鲸元券**：累计消费换算成券面值（100 万 tokens = 1 鲸元）。
 - **侧栏卡与设置分区**：卡片随 token 流式刷新，写盘 3 秒防抖；设置分区可调保留天数与轮询间隔。
 - **数据落点**：`$DSH_HOME/muciya-usage/{usage-ledger.json,provider-snapshots.json}`，可与上游
   `@linxin666/dsh-usage` 并存。
